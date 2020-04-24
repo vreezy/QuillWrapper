@@ -1,0 +1,72 @@
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
+  content: 'Überschrift 1';
+}
+
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
+  content: 'Überschrift  2';
+}
+
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
+  content: 'Überschrift  3';
+}
+
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
+  content: 'Überschrift  4';
+}
+
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
+  content: 'Überschrift  5';
+}
+
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
+  content: 'Überschrift  6';
+}
+
+.ql-snow.ql-toolbar button {
+  padding: 0;
+}
+
+.ql-snow .ql-picker.ql-header {
+  width: 110px;
+}
+
+.ql-toolbar.ql-snow  {
+  border: 0px;
+}
+
+.ql-container.ql-snow {
+  border: 0px;
+  box-sizing: border-box;
+}
+
+/* custom */
+.ql-toolbar.ql-snow {
+  background-color: black;
+  border-radius: 2px 2px 0 0;
+}
+
+.ql-header.ql-picker {
+  background-color:  white;
+}
+
+.ql-toolbar.ql-snow button {
+  color: white;
+  /* border-right: 1px solid white; */
+}
+
+.ql-toolbar.ql-snow .ql-color span {
+  color: white;
+  /* border-right: 1px solid white; */
+}
+
+.ql-toolbar.ql-snow .ql-background span {
+  color: white;
+  /* border-right: 1px solid white; */
+}
+
