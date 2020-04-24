@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 // import { Icon } from '@fluentui/react/lib/Icon';
+import { getIconClassName } from '@uifabric/styling';
 
 // Styles
+// import 'office-ui-fabric-core/dist/css/fabric.min.css';
 import 'react-quill/dist/quill.snow.css';
 import './QuillWrapper.css';
 import styles from './QuillWrapper.module.scss';
-
-var icons = Quill.import('ui/icons'); 
-icons['bold'] = '<i class="ms-Icon ms-Icon--Bold" aria-hidden="true"></i>';
-icons['italic'] = '<i class="ms-Icon ms-Icon--Italic" aria-hidden="true"></i>';
-icons['underline'] = '<i class="ms-Icon ms-Icon--Underline" aria-hidden="true"></i>';
-icons['color'] = '<i class="ms-Icon ms-Icon--FontColor" aria-hidden="true"></i>';
-icons['background'] = '<i class="ms-Icon ms-Icon--BackgroundColor" aria-hidden="true"></i>';
-icons['clean'] = '<i class="ms-Icon ms-Icon--ClearFormatting" aria-hidden="true"></i>';
 
 const CustomToolbar = () => (
   <div id="toolbar-quillwrapper">
@@ -64,6 +58,14 @@ function QuillWrapper() {
       setQuillStyle(styles.quillWrapper);
     }
   }
+
+  var icons = Quill.import('ui/icons'); 
+  icons['bold'] = `<i class="${getIconClassName('Bold')}" aria-hidden="true"></i>`;
+  icons['italic'] = `<i class="${getIconClassName('Italic')}" aria-hidden="true"></i>`;
+  icons['underline'] = `<i class="${getIconClassName('Underline')}" aria-hidden="true"></i>`;
+  icons['color'] = `<i class="${getIconClassName('FontColor')}" aria-hidden="true"></i>`;
+  icons['background'] = `<i class="${getIconClassName('BackgroundColor')}" aria-hidden="true"></i>`;
+  icons['clean'] = `<i class="${getIconClassName('ClearFormatting')}" aria-hidden="true"></i>`;
 
   return (
     <div>
