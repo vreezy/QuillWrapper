@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useEffect} from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 // import { Icon } from '@fluentui/react/lib/Icon';
 import { getIconClassName } from '@uifabric/styling';
@@ -93,10 +93,16 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     color: "#a80000"
   });
 
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `${state.quillStyle}`;
+  });
+
+
   const onFocus = () => {
     // setQuillStyle(getQuillStyle(true));
     // setFocus(true);
-    if(error) {
+    if(props.errorMessage !== "") {
       setState({
         focus: true,
         quillStyle: styles.quillWrapperFocusError
@@ -154,6 +160,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   return (
     <div>
+        {state.quillStyle}<br/>
         <Label
           required={props.required}
           // htmlFor="toolbar-quillwrapper"
