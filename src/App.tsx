@@ -20,25 +20,28 @@ interface IForm extends Dictionary {
 interface IAppState {
   form: IForm;
   errors: IForm;
-  placeholders: IFrom
 }
 
 function App() {
   const initState: IAppState = {
     form: {
       editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>",
-      textField: ""
+      textField: "Ein Text..."
     },
     errors: {
       editorHtml: "",
-      textField: "Text darf nicht leer sein."
+      textField: ""
     }
   }
-
   const [state, setState] = useState(initState)
 
   const [saving, setSaving] = useState(false);
   // const [checked, setChecked] = useState(false);
+
+  const placeholders: IForm = {
+    editorHtml: "",
+    textField: "Ein Text..."
+  }
 
   const onChangeQuillWrapper = (value: string) => {
     const newForm = Object.assign({}, state.form);
@@ -103,7 +106,6 @@ function App() {
       }
       return false
     })
-
   }
 
   return (
@@ -134,6 +136,7 @@ function App() {
             errorMessage={state.errors.textField}
             value={state.form.textField}
             onChange={(event: any, newValue: string | undefined) => onChangeTextField("textField", newValue)}
+            placeholder={placeholders.textField}
           />
           <br />
           <PrimaryButton
@@ -144,15 +147,14 @@ function App() {
           />
           <br />
 
+          <br />
+          <h5>State Overview</h5>
           Form:<br />
           {JSON.stringify(state.form)}<br />
           <br />
           Errors:<br />
           {JSON.stringify(state.errors)}<br />
-          {/* {Object.keys(form).forEach((key: string): string => {
-            return JSON.stringify(form[key])
-          })} */}
-          
+         
           <br />
         </div>
       </div>
