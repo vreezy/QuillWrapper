@@ -4,6 +4,7 @@
 .hidden {
     display: none
 }
+
 .quillWrapper {
     border: 1px solid rgb(96, 94, 92);
     border-radius: 0 0 2px 2px;
@@ -28,6 +29,25 @@
     border: 2px solid #a80000;
     border-radius: 0 0 2px 2px;
 }
+
+
+ 
+.hover {
+    border: 1px solid Black;
+    border-radius: 0 0 2px 2px;
+}
+
+.focus {
+    border: 2px solid rgb(0, 120, 212);
+    border-radius: 0 0 2px 2px;
+}
+
+.error {
+    border: 2px solid #a80000;
+    border-radius: 0 0 2px 2px;
+}
+
+
 
 .borderFix {
     border: 1px solid transparent;

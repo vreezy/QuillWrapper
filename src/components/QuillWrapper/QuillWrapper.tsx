@@ -89,7 +89,6 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   
 
   const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
-    // backgroundColor: "green",
     color: "#a80000"
   });
 
