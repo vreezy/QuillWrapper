@@ -11,10 +11,13 @@ import  Quillwrapper from './components/QuillWrapper/QuillWrapper';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-interface IForm {
+type Dictionary = { [index: string]: string }
+
+interface IForm extends Dictionary {
   editorHtml: string;
   textField: string;
 }
+
 function App() {
   const initForm: IForm = {
     editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>",
@@ -65,8 +68,9 @@ function App() {
   }
 
   const validForm = (form: IForm): boolean => {
-    const newErrors = Object.keys(errors).map((key) => {
-      return 
+    const newErrors: IForm = Object.assign({}, errors);
+    Object.keys(newErrors).forEach((key: string) => {
+      newErrors[key] = ""; 
     })
     if(!form.editorHtml || form.editorHtml) {
       newErrors.editorHtml = "Text darf nicht leer sein."
