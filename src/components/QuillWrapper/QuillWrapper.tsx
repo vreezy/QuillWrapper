@@ -105,7 +105,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
                 
                 <ReactQuill
                     value={props.value ? props.value : editorHtml}
-                    onChange={setEditorHtml}
+                    onChange={onChange}
                     modules={modules}
                     onFocus={onFocus}
                     onBlur={onBlur}

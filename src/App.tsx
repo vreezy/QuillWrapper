@@ -43,6 +43,13 @@ function App() {
             value={form.editorHtml}
             onChange={onChange}
           />
+
+          <br />
+
+          {JSON.stringify(form)}
+          {/* {Object.keys(form).forEach((key: string): string => {
+            return JSON.stringify(form[key])
+          })} */}
           
           <br />
         </div>
