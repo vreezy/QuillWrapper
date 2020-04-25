@@ -36,9 +36,10 @@ const modules = {
 export interface IQuillWrapper {
   required?: boolean;
   label?: React.ReactNode;
-  onChange?(value): function;
-    
-  }
+  onChange?(): void;
+  value?: string;
+  
+  
 }
 
 // function QuillWrapper(props: IQuillWrapper) {
@@ -94,7 +95,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
             <div className={focus ? "": styles.borderFix}>
                 
                 <ReactQuill
-                    value={editorHtml}
+                    value={props.value ? props.value : editorHtml}
                     onChange={setEditorHtml}
                     modules={modules}
                     onFocus={onFocus}

@@ -26,7 +26,11 @@ function App() {
           </p> 
           <br />
           
-          <Quillwrapper />
+          <Quillwrapper
+            label="Richt-Text Editor"
+            required
+            value="muh"
+          />
           
           <br />
         </div>
