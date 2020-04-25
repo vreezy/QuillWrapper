@@ -5,6 +5,7 @@ import { getIconClassName } from '@uifabric/styling';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { AnimationStyles, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { cssColor } from 'office-ui-fabric-react/lib/Color';
 
 // Styles
 // import 'office-ui-fabric-core/dist/css/fabric.min.css';
@@ -54,7 +55,8 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   const [quillStyle, setQuillStyle] = useState(styles.quillWrapper);
 
   const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
-    backgroundColor: "green",
+    // backgroundColor: "green",
+    color: "#a80000"
   });
 
   const onFocus = () => {
@@ -121,7 +123,9 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
                 />
             </div>
         </div>
-        <div className={flyIn}>{props.errorMessage}</div>
+        <div className={flyIn}>
+          <Text variant="small">{props.errorMessage}</Text>
+        </div>
     </div>
   );
 }
