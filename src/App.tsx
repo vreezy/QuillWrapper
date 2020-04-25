@@ -34,8 +34,21 @@ function App() {
   }
 
   const validForm = (): boolean => {
-    
+    const newErrors = Object.assign({}, errors);
+    if(!form.editorHtml || form.editorHtml) {
+      newErrors.editorHtml = "Text darf nicht leer sein."
+    }
     return true
+
+  }
+
+  const hasError = (errors: object): boolean => {
+    return Object.keys(errors).some((key:string): boolean => {
+      if(errors[key] !== "") {
+        return true;
+      }
+      return false
+    })
 
   }
 
