@@ -24,7 +24,8 @@ function App() {
   const [form, setForm] = useState(initForm)
 
   const [errors, setErrors] = useState({
-    editorHtml: ""
+    editorHtml: "",
+    textField: ""
   })
 
   const [saving, setSaving] = useState(false);
@@ -46,11 +47,12 @@ function App() {
         break;
     }
 
+    validForm(newForm);
     setForm(newForm);
   }
 
-  const sendForm = () => {
-    if(validForm()) {
+  const sendForm = (): void => {
+    if(validForm(form)) {
       return
     }
 
@@ -62,9 +64,13 @@ function App() {
     setSaving(false);
   }
 
-  const validForm = (): boolean => {
+  const validForm = (form: IForm): boolean => {
     const newErrors = Object.assign({}, errors);
     if(!form.editorHtml || form.editorHtml) {
+      newErrors.editorHtml = "Text darf nicht leer sein."
+    }
+
+    if(!form.textField) {
       newErrors.editorHtml = "Text darf nicht leer sein."
     }
     
@@ -101,10 +107,11 @@ function App() {
             required
             value={form.editorHtml}
             onChange={onChange}
+            // errorMessage={errors.editorHtml}
           />
           <TextField
             label="Textfield 1"
-            errorMessage={errors.editorHtml}
+            errorMessage={errors.textField}
             value={form.textField}
             onChange={(event: any, newValue: string | undefined) => onChangeTextField("textField", newValue)}
           />
@@ -112,7 +119,7 @@ function App() {
           <PrimaryButton
             text="Primary"
             onClick={sendForm}
-            disabled={saving}
+            disabled={saving || hasError(errors)}
             //checked={checked}
           />
           <br />
