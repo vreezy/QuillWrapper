@@ -112,7 +112,7 @@ function App() {
     <div className="container">
       <div className="row">
         <div className="column col">
-          <h3>Hallo Welt</h3>
+          <h3>QuillWrapper</h3>
           <p>
             Technologies: React.ts - react-quill - Fluent UI<br/>
             Target: Style react-quill like Fluent UI Component<br/>
