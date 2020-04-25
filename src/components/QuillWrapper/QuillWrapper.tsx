@@ -3,11 +3,7 @@ import ReactQuill, { Quill } from 'react-quill';
 // import { Icon } from '@fluentui/react/lib/Icon';
 import { getIconClassName } from '@uifabric/styling';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import {
-  AnimationStyles,
-  AnimationVariables,
-  mergeStyles
-} from 'office-ui-fabric-react/lib/Styling';
+import { AnimationStyles, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 // Styles
 // import 'office-ui-fabric-core/dist/css/fabric.min.css';
@@ -41,6 +37,9 @@ const modules = {
 export interface IQuillWrapper {
   required?: boolean;
   label?: React.ReactNode;
+
+  errorMessage?: React.ReactNode;
+
   onChange?(value: string): void;
   value?: string;
   
@@ -53,10 +52,10 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   const [focus, setFocus] = useState(false);
   const [quillStyle, setQuillStyle] = useState(styles.quillWrapper);
 
-  const myStyle3 = mergeStyles(AnimationStyles.slideRightIn400, {
+  const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
     backgroundColor: "green",
   });
-  
+
   const onFocus = () => {
     setQuillStyle(styles.quillWrapperFocus);
     setFocus(true);
@@ -83,9 +82,9 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(typeof props.onChange === "function") {
       props.onChange(value);
     }
-    else {
-      setEditorHtml(value);
-    }
+    // else {
+    //   setEditorHtml(value);
+    // }
   }
 
   var icons = Quill.import('ui/icons'); 
@@ -121,6 +120,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
                 />
             </div>
         </div>
+        <div className={flyIn}>{props.errorMessage}</div>
     </div>
   );
 }

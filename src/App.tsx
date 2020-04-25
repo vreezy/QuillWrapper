@@ -118,8 +118,9 @@ function App() {
             required
             value={form.editorHtml}
             onChange={onChangeQuillWrapper}
-            // errorMessage={errors.editorHtml}
+            errorMessage={errors.editorHtml}
           />
+          
           <TextField
             label="Textfield 1"
             errorMessage={errors.textField}
