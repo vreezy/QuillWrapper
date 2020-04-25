@@ -11,9 +11,15 @@ import  Quillwrapper from './components/QuillWrapper/QuillWrapper';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+interface formState {
+  editorHtml: React.ReactNode;
+  textField: React.ReactNode;
+}
 function App() {
+  const initForm: IForm
   const [form, setForm] = useState({
-    editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>"
+    editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>",
+    textField: ""
   })
 
   const [errors, setErrors] = useState({
@@ -26,6 +32,19 @@ function App() {
   const onChange = (value: string) => {
     const newForm = Object.assign({}, form);
     newForm.editorHtml = value;
+    
+  }
+
+  const onChangeTextField = (formName: string, value: React.ReactNode) => {
+    const newForm = Object.assign({}, form);
+
+    switch(formName) {
+      case "textField":
+        newForm.textField = value;
+
+        break;
+    }
+
     setForm(newForm);
   }
 
@@ -82,7 +101,12 @@ function App() {
             value={form.editorHtml}
             onChange={onChange}
           />
-          <TextField label="Textfield 1" errorMessage={errors.editorHtml}/>
+          <TextField
+            label="Textfield 1"
+            errorMessage={errors.editorHtml}
+            value={form.textField}
+            onChange={(value) => onChangeTextField("textField", value)}
+          />
           <br />
           <PrimaryButton text="Primary" onClick={sendForm} allowDisabledFocus disabled={saving} checked={checked} />
           <br />
