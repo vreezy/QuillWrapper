@@ -62,7 +62,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
   const initState: IQuillWrapperState = {
-    focus: true,
+    focus: false,
     quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : "")
   }
 
