@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 // import { Icon } from '@fluentui/react/lib/Icon';
 import { getIconClassName } from '@uifabric/styling';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 
 // Styles
 // import 'office-ui-fabric-core/dist/css/fabric.min.css';
@@ -32,7 +33,11 @@ const modules = {
   }
 };
 
-function QuillWrapper() {
+export interface IQuillWrapper {
+  required: boolean;
+}
+
+function QuillWrapper(props: IQuillWrapper) {
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
   const [focus, setFocus] = useState(false);
   const [quillStyle, setQuillStyle] = useState(styles.quillWrapper);
@@ -69,6 +74,7 @@ function QuillWrapper() {
 
   return (
     <div>
+        <Label>Hallo Welt</Label>
         <CustomToolbar />
         <div
         onMouseOver={onOver}

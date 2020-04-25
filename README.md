@@ -8,11 +8,13 @@ copy the QuillWrapper Component into your Project
 Intall: 
 * npm install react-quill
 * npm i @uifabric/styling --save
+* npm i @fluentui/react
 
-## Docus
+## Package Docus
 
 * https://www.npmjs.com/package/react-quill
 * https://docs.microsoft.com/de-de/sharepoint/dev/spfx/office-ui-fabric-integration#usage-of-the-office-ui-fabric-icons-in-spfx-components
+* https://developer.microsoft.com/en-us/fluentui#/
 
 # Trello / Project Management
 https://trello.com/b/fXiiPKZh/quillwrapper
