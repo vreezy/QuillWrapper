@@ -61,28 +61,30 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
 
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
-  
-
-  const getQuillStyle = () => {
-    if(!state.focus && error) {
-      return styles.quillWrapperError;
-    }
-    
-    if(state.focus && error) {
-      return styles.quillWrapperFocusError;
-    }
-
-    if(state.focus && !error) {
-      return styles.quillWrapperFocus;
-    }
-    return styles.quillWrapper;
-  }
-
   const initState: IQuillWrapperState = {
     focus: false,
-    quillStyle: getQuillStyle()
+    quillStyle: styles.quillWrapper
   }
+
   const [state, setState] = useState(initState);
+
+  // const getQuillStyle = () => {
+  //   if(!state.focus && error) {
+  //     return styles.quillWrapperError;
+  //   }
+    
+  //   if(state.focus && error) {
+  //     return styles.quillWrapperFocusError;
+  //   }
+
+  //   if(state.focus && !error) {
+  //     return styles.quillWrapperFocus;
+  //   }
+  //   return styles.quillWrapper;
+  // }
+
+
+  
 
   
 
@@ -94,16 +96,24 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   const onFocus = () => {
     // setQuillStyle(getQuillStyle(true));
     // setFocus(true);
-    setState({
-      focus: true,
-      quillStyle: getQuillStyle()
-    })
+    if(error) {
+      setState({
+        focus: true,
+        quillStyle: styles.quillWrapperFocusError
+      })
+    }
+    else {
+      setState({
+        focus: true,
+        quillStyle: styles.quillWrapperFocus
+      })
+    }
   }
 
   const onBlur = () => {
     setState({
       focus: false,
-      quillStyle: getQuillStyle()
+      quillStyle: styles.quillWrapper
     })
   }
 
@@ -111,15 +121,18 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(!state.focus) {
       setState({
         focus: state.focus,
-        quillStyle: getQuillStyle()
+        quillStyle: styles.quillWrapperHover
       })
     }
   }
 
   const onOut = () => {
-    
-      setQuillStyle(getQuillStyle(false));
-
+    if(!state.focus) {
+      setState({
+        focus: state.focus,
+        quillStyle: styles.quillWrapper
+      })
+    }
   }
 
   const onChange = (value: string) => {    
@@ -151,9 +164,9 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
         <div
         onMouseOver={onOver}
         onMouseOut={onOut}
-        className={quillStyle}
+        className={state.quillStyle}
         >
-            <div className={focus ? "": styles.borderFix}>
+            <div className={state.focus ? "": styles.borderFix}>
                 
                 <ReactQuill
                     value={props.value ? props.value : editorHtml}
