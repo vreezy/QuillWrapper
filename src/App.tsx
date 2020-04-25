@@ -11,23 +11,24 @@ import  Quillwrapper from './components/QuillWrapper/QuillWrapper';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-interface formState {
-  editorHtml: React.ReactNode;
-  textField: React.ReactNode;
+interface IForm {
+  editorHtml: string;
+  textField: string;
 }
 function App() {
-  const initForm: IForm
-  const [form, setForm] = useState({
+  const initForm: IForm = {
     editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>",
     textField: ""
-  })
+  }
+
+  const [form, setForm] = useState(initForm)
 
   const [errors, setErrors] = useState({
     editorHtml: ""
   })
 
   const [saving, setSaving] = useState(false);
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
 
   const onChange = (value: string) => {
     const newForm = Object.assign({}, form);
@@ -35,12 +36,12 @@ function App() {
     
   }
 
-  const onChangeTextField = (formName: string, value: React.ReactNode) => {
+  const onChangeTextField = (formName: string, newValue: string | undefined) => {
     const newForm = Object.assign({}, form);
 
     switch(formName) {
       case "textField":
-        newForm.textField = value;
+        newForm.textField = newValue ? newValue : "";
 
         break;
     }
@@ -105,10 +106,15 @@ function App() {
             label="Textfield 1"
             errorMessage={errors.editorHtml}
             value={form.textField}
-            onChange={(value) => onChangeTextField("textField", value)}
+            onChange={(event: any, newValue: string | undefined) => onChangeTextField("textField", newValue)}
           />
           <br />
-          <PrimaryButton text="Primary" onClick={sendForm} allowDisabledFocus disabled={saving} checked={checked} />
+          <PrimaryButton
+            text="Primary"
+            onClick={sendForm}
+            disabled={saving}
+            //checked={checked}
+          />
           <br />
 
           {JSON.stringify(form)}
