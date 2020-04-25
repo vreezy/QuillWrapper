@@ -62,8 +62,8 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
   const initState: IQuillWrapperState = {
-    focus: false,
-    quillStyle: styles.quillWrapper
+    focus: true,
+    quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : "")
   }
 
   const [state, setState] = useState(initState);
@@ -81,12 +81,12 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   const onFocus = () => {
     // setQuillStyle(getQuillStyle(true));
     // setFocus(true);
-    if(props.errorMessage !== "") {
+
       setState({
         focus: true,
-        quillStyle: mergeStyles(styles.q // styles.quillWrapperFocusError
+        quillStyle: mergeStyles(styles.quillWrapper, styles.focus, error ? styles.error : "") // styles.quillWrapperFocusError
       })
-    }
+
   }
 
   const onBlur = () => {
@@ -100,7 +100,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(!state.focus) {
       setState({
         focus: state.focus,
-        quillStyle: styles.quillWrapperHover
+        quillStyle: mergeStyles(styles.quillWrapper, styles.hover)// styles.quillWrapperHover
       })
     }
   }
