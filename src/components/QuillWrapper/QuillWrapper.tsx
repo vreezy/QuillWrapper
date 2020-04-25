@@ -3,6 +3,7 @@ import ReactQuill, { Quill } from 'react-quill';
 // import { Icon } from '@fluentui/react/lib/Icon';
 import { getIconClassName } from '@uifabric/styling';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import { AnimationStyles, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 // Styles
@@ -82,9 +83,9 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(typeof props.onChange === "function") {
       props.onChange(value);
     }
-    // else {
-    //   setEditorHtml(value);
-    // }
+    else {
+      setEditorHtml(value);
+    }
   }
 
   var icons = Quill.import('ui/icons'); 

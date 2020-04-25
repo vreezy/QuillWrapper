@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 
 
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -24,14 +24,15 @@ interface IAppState {
 }
 
 function App() {
-  const initForm: IForm = {
-    editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>",
-    textField: ""
-  }
-
-  const initErrors: IForm = {
-    editorHtml: "",
-    textField: "Text darf nicht leer sein."
+  const initState: IAppState = {
+    form: {
+      editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>",
+      textField: ""
+    },
+    errors: {
+      editorHtml: "",
+      textField: "Text darf nicht leer sein."
+    }
   }
 
   const [state, setState] = useState(initState)
@@ -39,20 +40,19 @@ function App() {
   const [saving, setSaving] = useState(false);
   // const [checked, setChecked] = useState(false);
 
-  useEffect(() => {
-    // validForm(form);
-  }, [form]);
-
   const onChangeQuillWrapper = (value: string) => {
-    const newForm = Object.assign({}, form);
+    const newForm = Object.assign({}, state.form);
     newForm.editorHtml = value;
 
-    // validForm(newForm);
-    setForm(newForm);
+    const newErrors = checkErrors(newForm);
+    setState({
+      form: newForm,
+      errors: newErrors
+    });
   }
 
   const onChangeTextField = (formName: string, newValue: string | undefined) => {
-    const newForm = Object.assign({}, form);
+    const newForm = Object.assign({}, state.form);
 
     switch(formName) {
       case "textField":
@@ -62,8 +62,11 @@ function App() {
         newForm[formName] = newValue ? newValue : "";
     }
 
-    validForm(newForm);
-    setForm(newForm);
+    const newErrors = checkErrors(newForm);
+    setState({
+      form: newForm,
+      errors: newErrors
+    })
   }
 
   const sendForm = (): void => {
@@ -75,8 +78,8 @@ function App() {
     setSaving(false);
   }
 
-  const validForm = (form: IForm): void => {
-    const newErrors: IForm = Object.assign({}, errors);
+  const checkErrors = (form: IForm): IForm => {
+    const newErrors: IForm = Object.assign({}, state.errors);
     Object.keys(newErrors).forEach((key: string) => {
       newErrors[key] = ""; 
     });
@@ -89,13 +92,13 @@ function App() {
       newErrors.textField = "Text darf nicht leer sein."
     }
     
-    setErrors(newErrors)
+    return newErrors
     // return hasError(newErrors);
   }
 
   const hasError = (): boolean => {
-    return Object.keys(errors).some((key: string) => {
-      if(errors[key] !== "") {
+    return Object.keys(state.errors).some((key: string) => {
+      if(state.errors[key] !== "") {
         return true;
       }
       return false
@@ -120,15 +123,15 @@ function App() {
           <Quillwrapper
             label="Richt-Text Editor"
             required
-            value={form.editorHtml}
+            value={state.form.editorHtml}
             onChange={onChangeQuillWrapper}
-            errorMessage={errors.editorHtml}
+            errorMessage={state.errors.editorHtml}
           />
 
           <TextField
             label="Textfield 1"
-            errorMessage={errors.textField}
-            value={form.textField}
+            errorMessage={state.errors.textField}
+            value={state.form.textField}
             onChange={(event: any, newValue: string | undefined) => onChangeTextField("textField", newValue)}
           />
           <br />
@@ -141,10 +144,10 @@ function App() {
           <br />
 
           Form:<br />
-          {JSON.stringify(form)}<br />
+          {JSON.stringify(state.form)}<br />
           <br />
           Errors:<br />
-          {JSON.stringify(errors)}<br />
+          {JSON.stringify(state.errors)}<br />
           {/* {Object.keys(form).forEach((key: string): string => {
             return JSON.stringify(form[key])
           })} */}
