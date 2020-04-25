@@ -1,7 +1,13 @@
+# QuillWrapper
+
+
+# Trello / Project Management
+https://trello.com/b/fXiiPKZh/quillwrapper
+
 https://docs.microsoft.com/de-de/sharepoint/dev/spfx/office-ui-fabric-integration#usage-of-the-office-ui-fabric-icons-in-spfx-components
 npm i @uifabric/styling --save
 
----
+# Original Readme for create-react-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
