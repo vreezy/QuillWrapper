@@ -31,7 +31,7 @@ function App() {
   const [saving, setSaving] = useState(false);
   // const [checked, setChecked] = useState(false);
 
-  const onChange = (value: string) => {
+  const onChangeQuillWrapper = (value: string) => {
     const newForm = Object.assign({}, form);
     newForm.editorHtml = value;
     
@@ -65,12 +65,14 @@ function App() {
   }
 
   const validForm = (form: IForm): boolean => {
-    const newErrors = Object.assign({}, errors);
+    const newErrors = Object.keys(errors).map((key) => {
+      return 
+    })
     if(!form.editorHtml || form.editorHtml) {
       newErrors.editorHtml = "Text darf nicht leer sein."
     }
 
-    if(!form.textField) {
+    if(form.textField === "") {
       newErrors.editorHtml = "Text darf nicht leer sein."
     }
     
@@ -106,7 +108,7 @@ function App() {
             label="Richt-Text Editor"
             required
             value={form.editorHtml}
-            onChange={onChange}
+            onChange={onChangeQuillWrapper}
             // errorMessage={errors.editorHtml}
           />
           <TextField
