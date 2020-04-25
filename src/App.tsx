@@ -20,7 +20,7 @@ function App() {
     editorHtml: ""
   })
 
-  const [saving, setSaving] = useState(true);
+  const [saving, setSaving] = useState(false);
   const [checked, setChecked] = useState(false);
 
   const onChange = (value: string) => {
@@ -30,7 +30,16 @@ function App() {
   }
 
   const sendForm = () => {
+    if(validForm()) {
+      return
+    }
+
+    setSaving(true);
+
+    // do what u want with your form
     console.log("sendForm");
+
+    setSaving(false);
   }
 
   const validForm = (): boolean => {
@@ -38,13 +47,14 @@ function App() {
     if(!form.editorHtml || form.editorHtml) {
       newErrors.editorHtml = "Text darf nicht leer sein."
     }
-    return true
-
+    
+    setErrors(newErrors);
+    return hasError(newErrors);
   }
 
-  const hasError = (errors: object): boolean => {
-    return Object.keys(errors).some((key:string): boolean => {
-      if(errors[key] !== "") {
+  const hasError = (errors: {[index: string]:string}): boolean => {
+    return Object.keys(errors).some((key: string) => {
+      if(errors[key as string] !== "") {
         return true;
       }
       return false
