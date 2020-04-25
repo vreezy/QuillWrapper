@@ -5,7 +5,7 @@ import { getIconClassName } from '@uifabric/styling';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { AnimationStyles, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { cssColor } from 'office-ui-fabric-react/lib/Color';
+
 
 // Styles
 // import 'office-ui-fabric-core/dist/css/fabric.min.css';
@@ -52,7 +52,7 @@ export interface IQuillWrapper {
 export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrapper) => {
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
   const [focus, setFocus] = useState(false);
-  const [quillStyle, setQuillStyle] = useState(styles.quillWrapper);
+  const [quillStyle, setQuillStyle] = useState(props.errorMessage === "" ? styles.quillWrapper : styles.quillWrapperError);
 
   const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
     // backgroundColor: "green",
@@ -60,24 +60,24 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   });
 
   const onFocus = () => {
-    setQuillStyle(styles.quillWrapperFocus);
+    setQuillStyle(props.errorMessage === "" ? styles.quillWrapperFocus : styles.quillWrapperFocusError );
     setFocus(true);
   }
 
   const onBlur = () => {
-    setQuillStyle(styles.quillWrapper);
+    setQuillStyle(props.errorMessage === "" ? styles.quillWrapper : styles.quillWrapperError);
     setFocus(false);
   }
 
   const onOver = () => {
     if(!focus) {
-      setQuillStyle(styles.quillWrapperHover);
+      setQuillStyle(props.errorMessage === "" ? styles.quillWrapperHover : styles.quillWrapperError );
     }
   }
 
   const onOut = () => {
     if(!focus) {
-      setQuillStyle(styles.quillWrapper);
+      setQuillStyle(props.errorMessage === "" ? styles.quillWrapper : styles.quillWrapperError);
     }
   }
 
@@ -123,7 +123,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
                 />
             </div>
         </div>
-        <div className={flyIn}>
+        <div className={props.errorMessage === "" ? styles.hidden : flyIn}>
           <Text variant="small">{props.errorMessage}</Text>
         </div>
     </div>

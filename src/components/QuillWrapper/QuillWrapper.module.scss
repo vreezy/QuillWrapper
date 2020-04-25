@@ -1,8 +1,16 @@
 // @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 // @import '~office-ui-fabric-react/dist/sass/_References.scss';
 
+.hidden {
+    display: none
+}
 .quillWrapper {
     border: 1px solid rgb(96, 94, 92);
+    border-radius: 0 0 2px 2px;
+}
+
+.quillWrapperError {
+    border: 1px solid #a80000;
     border-radius: 0 0 2px 2px;
 }
   
@@ -13,6 +21,11 @@
 
 .quillWrapperFocus {
     border: 2px solid rgb(0, 120, 212);
+    border-radius: 0 0 2px 2px;
+}
+
+.quillWrapperFocusError {
+    border: 2px solid #a80000;
     border-radius: 0 0 2px 2px;
 }
 
