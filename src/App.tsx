@@ -42,7 +42,9 @@ function App() {
   const onChangeQuillWrapper = (value: string) => {
     const newForm = Object.assign({}, form);
     newForm.editorHtml = value;
-    
+
+    validForm(newForm);
+    setForm(newForm);
   }
 
   const onChangeTextField = (formName: string, newValue: string | undefined) => {
@@ -51,8 +53,9 @@ function App() {
     switch(formName) {
       case "textField":
         newForm.textField = newValue ? newValue : "";
-
         break;
+      default:
+        newForm[formName] = newValue ? newValue : "";
     }
 
     validForm(newForm);
@@ -74,7 +77,7 @@ function App() {
       newErrors[key] = ""; 
     });
 
-    if(form.editorHtml === "") {
+    if(form.editorHtml === "" || form.editorHtml.replace(/(<([^>]+)>)/ig,"") === "") {
       newErrors.editorHtml = "Text darf nicht leer sein."
     }
 
