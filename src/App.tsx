@@ -28,15 +28,15 @@ function App() {
 
   const [errors, setErrors] = useState({
     editorHtml: "",
-    textField: ""
+    textField: "Text darf nicht leer sein."
   })
 
   const [saving, setSaving] = useState(false);
   // const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    validForm(form);
-  });
+    // validForm(form);
+  }, [form]);
 
   const onChangeQuillWrapper = (value: string) => {
     const newForm = Object.assign({}, form);
@@ -54,7 +54,7 @@ function App() {
         break;
     }
 
-    validForm(newForm);
+    setErrors(validForm(newForm));
     setForm(newForm);
   }
 
@@ -71,7 +71,7 @@ function App() {
     setSaving(false);
   }
 
-  const validForm = (form: IForm): boolean => {
+  const validForm = (form: IForm): IForm => {
     const newErrors: IForm = Object.assign({}, errors);
     Object.keys(newErrors).forEach((key: string) => {
       newErrors[key] = ""; 
@@ -85,8 +85,8 @@ function App() {
       newErrors.editorHtml = "Text darf nicht leer sein."
     }
     
-    setErrors(newErrors);
-    return hasError(newErrors);
+    
+    return newErrors;
   }
 
   const hasError = (errors: {[index: string]:string}): boolean => {
