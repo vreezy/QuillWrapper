@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 // import { Icon } from '@fluentui/react/lib/Icon';
 import { getIconClassName } from '@uifabric/styling';
@@ -34,10 +34,15 @@ const modules = {
 };
 
 export interface IQuillWrapper {
-  required: boolean;
+  required?: boolean;
+  label?: React.ReactNode;
+  onChange?(value): function;
+    
+  }
 }
 
-function QuillWrapper(props: IQuillWrapper) {
+// function QuillWrapper(props: IQuillWrapper) {
+export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrapper) => {
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
   const [focus, setFocus] = useState(false);
   const [quillStyle, setQuillStyle] = useState(styles.quillWrapper);
@@ -74,7 +79,12 @@ function QuillWrapper(props: IQuillWrapper) {
 
   return (
     <div>
-        <Label>Hallo Welt</Label>
+        <Label
+          required={props.required}
+          // htmlFor="toolbar-quillwrapper"
+        >
+          {props.label}
+        </Label>
         <CustomToolbar />
         <div
         onMouseOver={onOver}
