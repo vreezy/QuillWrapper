@@ -50,14 +50,13 @@ export interface IQuillWrapper {
 
 // function QuillWrapper(props: IQuillWrapper) {
 export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrapper) => {
-  const error = props.errorMessage !== ""
+  const error = props.errorMessage !== "";
 
-  const getInitQuillStyle = () => {
-    
+  const getQuillStyle = () => {
     if(!focus && error) {
       return styles.quillWrapperError;
     }
-    else if(focus && error) {
+    if(focus && error) {
       return styles.quillWrapperFocusError;
     }
     else if(focus && !error) {
@@ -68,7 +67,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
   const [focus, setFocus] = useState(false);
-  const [quillStyle, setQuillStyle] = useState(getInitQuillStyle());
+  const [quillStyle, setQuillStyle] = useState(getQuillStyle());
 
   const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
     // backgroundColor: "green",
@@ -76,24 +75,24 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   });
 
   const onFocus = () => {
-    setQuillStyle(props.errorMessage === "" ? styles.quillWrapperFocus : styles.quillWrapperFocusError );
+    setQuillStyle(getQuillStyle());
     setFocus(true);
   }
 
   const onBlur = () => {
-    setQuillStyle(props.errorMessage === "" ? styles.quillWrapper : styles.quillWrapperError);
+    setQuillStyle(getQuillStyle());
     setFocus(false);
   }
 
   const onOver = () => {
     if(!focus) {
-      setQuillStyle(props.errorMessage === "" ? styles.quillWrapperHover : styles.quillWrapperError );
+      setQuillStyle(getQuillStyle());
     }
   }
 
   const onOut = () => {
     if(!focus) {
-      setQuillStyle(props.errorMessage === "" ? styles.quillWrapper : styles.quillWrapperError);
+      setQuillStyle(getQuillStyle());
     }
   }
 
