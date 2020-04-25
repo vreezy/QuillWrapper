@@ -44,8 +44,14 @@ export interface IQuillWrapper {
 
   onChange?(value: string): void;
   value?: string;
+
   
-  
+}
+
+interface IQuillWrapperState {
+  focus: boolean;
+  quillStyle: string;
+
 }
 
 // function QuillWrapper(props: IQuillWrapper) {
@@ -55,25 +61,30 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
 
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
-  const [focus, setFocus] = useState(false);
+  
 
-  const getQuillStyle = (focus: boolean) => {
-    if(!focus && error) {
+  const getQuillStyle = () => {
+    if(!state.focus && error) {
       return styles.quillWrapperError;
     }
     
-    if(focus && error) {
+    if(state.focus && error) {
       return styles.quillWrapperFocusError;
     }
 
-    if(focus && !error) {
+    if(state.focus && !error) {
       return styles.quillWrapperFocus;
     }
     return styles.quillWrapper;
   }
 
+  const initState: IQuillWrapperState = {
+    focus: false,
+    quillStyle: getQuillStyle()
+  }
+  const [state, setState] = useState(initState);
 
-  const [quillStyle, setQuillStyle] = useState(getQuillStyle(false));
+  
 
   const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
     // backgroundColor: "green",
@@ -81,23 +92,32 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   });
 
   const onFocus = () => {
-    setQuillStyle(getQuillStyle(true));
+    // setQuillStyle(getQuillStyle(true));
     // setFocus(true);
+    setState({
+      focus: true,
+      quillStyle: getQuillStyle()
+    })
   }
 
   const onBlur = () => {
-    setQuillStyle(getQuillStyle(false));
-    // setFocus(false);
+    setState({
+      focus: false,
+      quillStyle: getQuillStyle()
+    })
   }
 
   const onOver = () => {
-    if(!focus) {
-      setQuillStyle(styles.quillWrapperHover);
+    if(!state.focus) {
+      setState({
+        focus: state.focus,
+        quillStyle: getQuillStyle()
+      })
     }
   }
 
   const onOut = () => {
-
+    
       setQuillStyle(getQuillStyle(false));
 
   }
