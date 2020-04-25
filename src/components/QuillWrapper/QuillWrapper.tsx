@@ -50,9 +50,25 @@ export interface IQuillWrapper {
 
 // function QuillWrapper(props: IQuillWrapper) {
 export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrapper) => {
+  const error = props.errorMessage !== ""
+
+  const getInitQuillStyle = () => {
+    
+    if(!focus && error) {
+      return styles.quillWrapperError;
+    }
+    else if(focus && error) {
+      return styles.quillWrapperFocusError;
+    }
+    else if(focus && !error) {
+      return styles.quillWrapperFocus;
+    }
+    return styles.quillWrapper;
+  }
+
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
   const [focus, setFocus] = useState(false);
-  const [quillStyle, setQuillStyle] = useState(props.errorMessage === "" ? styles.quillWrapper : styles.quillWrapperError);
+  const [quillStyle, setQuillStyle] = useState(getInitQuillStyle());
 
   const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
     // backgroundColor: "green",
