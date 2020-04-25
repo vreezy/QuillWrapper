@@ -65,14 +65,12 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   });
 
   useEffect(() => {
+    setState({
+      focus: state.focus,
+      quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus : "", error ? styles.error : "")
+    })
 
-      setState({
-        focus: state.focus,
-        quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus : "", error ? styles.error : "")
-      })
-
-    }
-  }, [props.errorMessage, state.focus]);
+  }, [props.errorMessage, state.focus, error]);
   
   const onFocus = () => {
     setState({
@@ -151,7 +149,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
         <div className={error ? errorStyle : styles.hidden}>
           <Text variant="small">{props.errorMessage}</Text>
         </div>
-        {state.quillStyle}<br/>
+        {/* {state.quillStyle} */}
     </div>
   );
 }
