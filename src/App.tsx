@@ -18,19 +18,23 @@ interface IForm extends Dictionary {
   textField: string;
 }
 
+interface IAppState {
+  form: IForm;
+  errors: IForm;
+}
+
 function App() {
   const initForm: IForm = {
     editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>",
     textField: ""
   }
 
-  const [form, setForm] = useState(initForm)
-
   const initErrors: IForm = {
     editorHtml: "",
     textField: "Text darf nicht leer sein."
   }
-  const [errors, setErrors] = useState(initErrors)
+
+  const [state, setState] = useState(initState)
 
   const [saving, setSaving] = useState(false);
   // const [checked, setChecked] = useState(false);
@@ -43,7 +47,7 @@ function App() {
     const newForm = Object.assign({}, form);
     newForm.editorHtml = value;
 
-    validForm(newForm);
+    // validForm(newForm);
     setForm(newForm);
   }
 
@@ -120,7 +124,7 @@ function App() {
             onChange={onChangeQuillWrapper}
             errorMessage={errors.editorHtml}
           />
-          
+
           <TextField
             label="Textfield 1"
             errorMessage={errors.textField}
