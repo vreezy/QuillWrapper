@@ -68,26 +68,6 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   const [state, setState] = useState(initState);
 
-  // const getQuillStyle = () => {
-  //   if(!state.focus && error) {
-  //     return styles.quillWrapperError;
-  //   }
-    
-  //   if(state.focus && error) {
-  //     return styles.quillWrapperFocusError;
-  //   }
-
-  //   if(state.focus && !error) {
-  //     return styles.quillWrapperFocus;
-  //   }
-  //   return styles.quillWrapper;
-  // }
-
-
-  
-
-  
-
   const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
     color: "#a80000"
   });
@@ -104,13 +84,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(props.errorMessage !== "") {
       setState({
         focus: true,
-        quillStyle: styles.quillWrapperFocusError
-      })
-    }
-    else {
-      setState({
-        focus: true,
-        quillStyle: styles.quillWrapperFocus
+        quillStyle: mergeStyles(styles.q // styles.quillWrapperFocusError
       })
     }
   }
