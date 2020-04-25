@@ -1,5 +1,5 @@
-// import React, { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
+
 
 //import { TextField } from 'office-ui-fabric-react/lib/TextField';
 // import { Icon } from '@fluentui/react/lib/Icon';
@@ -11,6 +11,17 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  const [form, setForm] = useState({
+    editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>"
+  })
+
+  const onChange = (value: string) => {
+    const newForm = Object.assign({}, form);
+
+    newForm.editorHtml = value;
+
+    setForm(newForm);
+  }
 
   return (
     <div className="container">
@@ -29,7 +40,8 @@ function App() {
           <Quillwrapper
             label="Richt-Text Editor"
             required
-            value="muh"
+            value={form.editorHtml}
+            onChange={onChange}
           />
           
           <br />
