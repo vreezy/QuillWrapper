@@ -74,10 +74,22 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   useEffect(() => {
     // Update the document title using the browser API
-    document.title = `${state.quillStyle}`;
-  });
+    if(props.errorMessage !== "") {
+      setState({
+        focus: state.focus,
+        quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus: "", styles.error) // styles.quillWrapperFocusError
+      })
+    } 
+    else {
+      setState({
+        focus: state.focus,
+        quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus: "", styles.focus) // styles.quillWrapperFocusError
+      })
+    }
+  }, [props.errorMessage, state.focus]);
 
 
+  
   const onFocus = () => {
     // setQuillStyle(getQuillStyle(true));
     // setFocus(true);
@@ -100,7 +112,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(!state.focus) {
       setState({
         focus: state.focus,
-        quillStyle: mergeStyles(styles.quillWrapper, styles.hover)// styles.quillWrapperHover
+        quillStyle: mergeStyles(styles.quillWrapper, styles.hover, error ? styles.error : "")// styles.quillWrapperHover
       })
     }
   }
@@ -109,7 +121,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(!state.focus) {
       setState({
         focus: state.focus,
-        quillStyle: styles.quillWrapper
+        quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : "")
       })
     }
   }
