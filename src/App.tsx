@@ -16,6 +16,13 @@ function App() {
     editorHtml: "<h1>Hallo Welt</h1><p>Schreibe deinen Text...</p>"
   })
 
+  const [errors, setErrors] = useState({
+    editorHtml: ""
+  })
+
+  const [saving, setSaving] = useState(true);
+  const [checked, setChecked] = useState(false);
+
   const onChange = (value: string) => {
     const newForm = Object.assign({}, form);
     newForm.editorHtml = value;
@@ -24,6 +31,12 @@ function App() {
 
   const sendForm = () => {
     console.log("sendForm");
+  }
+
+  const validForm = (): boolean => {
+    
+    return true
+
   }
 
   return (
@@ -46,10 +59,9 @@ function App() {
             value={form.editorHtml}
             onChange={onChange}
           />
-
-          <TextField label="Textfield 1"/>
-
-          <PrimaryButton text="Primary" onClick={_sendForm} allowDisabledFocus disabled={saving} checked={checked} />
+          <TextField label="Textfield 1" errorMessage={errors.editorHtml}/>
+          <br />
+          <PrimaryButton text="Primary" onClick={sendForm} allowDisabledFocus disabled={saving} checked={checked} />
           <br />
 
           {JSON.stringify(form)}
