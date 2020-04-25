@@ -6,9 +6,7 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { AnimationStyles, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-
 // Styles
-// import 'office-ui-fabric-core/dist/css/fabric.min.css';
 import 'react-quill/dist/quill.snow.css';
 import './QuillWrapper.css';
 import styles from './QuillWrapper.module.scss';
@@ -39,28 +37,22 @@ const modules = {
 export interface IQuillWrapper {
   required?: boolean;
   label?: React.ReactNode;
-
   errorMessage?: React.ReactNode;
-
   onChange?(value: string): void;
   value?: string;
-
-  
 }
 
 interface IQuillWrapperState {
   focus: boolean;
   quillStyle: string;
-
 }
 
 // function QuillWrapper(props: IQuillWrapper) {
 export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrapper) => {
   const error = props.errorMessage !== "";
 
-
-
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
+
   const initState: IQuillWrapperState = {
     focus: false,
     quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : "")
@@ -68,41 +60,37 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   const [state, setState] = useState(initState);
 
-  const flyIn = mergeStyles(AnimationStyles.slideDownIn20, {
+  const errorStyle = mergeStyles(AnimationStyles.slideDownIn20, {
     color: "#a80000"
   });
 
   useEffect(() => {
-    // Update the document title using the browser API
     if(props.errorMessage !== "") {
       setState({
         focus: state.focus,
-        quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus: "", styles.error) // styles.quillWrapperFocusError
+        quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus: "", styles.error)
       })
     } 
     else {
       setState({
         focus: state.focus,
-        quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus: "", styles.focus) // styles.quillWrapperFocusError
+        quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus: "", styles.focus)
       })
     }
   }, [props.errorMessage, state.focus]);
-
-
   
   const onFocus = () => {
       setState({
         focus: true,
-        quillStyle: mergeStyles(styles.quillWrapper, styles.focus, error ? styles.error : "") // styles.quillWrapperFocusError
-      })
-
+        quillStyle: mergeStyles(styles.quillWrapper, styles.focus, error ? styles.error : "")
+      });
   }
 
   const onBlur = () => {
     setState({
       focus: false,
       quillStyle: styles.quillWrapper
-    })
+    });
   }
 
   const onOver = () => {
@@ -110,8 +98,8 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
       setState({
         focus: state.focus,
         quillStyle: mergeStyles(styles.quillWrapper, styles.hover, error ? styles.error : "")// styles.quillWrapperHover
-      })
-    }
+      });
+    };
   }
 
   const onOut = () => {
@@ -119,8 +107,8 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
       setState({
         focus: state.focus,
         quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : "")
-      })
-    }
+      });
+    };
   }
 
   const onChange = (value: string) => {    
@@ -142,7 +130,6 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   return (
     <div>
-        {/* {state.quillStyle}<br/> */}
         <Label
           required={props.required}
           // htmlFor="toolbar-quillwrapper"
@@ -155,7 +142,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
         onMouseOut={onOut}
         className={state.quillStyle}
         >
-            <div className={state.focus ? "": styles.borderFix}>
+            <div className={state.focus ? "" : styles.borderFix}>
                 
                 <ReactQuill
                     value={props.value ? props.value : editorHtml}
@@ -166,9 +153,10 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
                 />
             </div>
         </div>
-        <div className={props.errorMessage === "" ? styles.hidden : flyIn}>
+        <div className={error ? errorStyle : styles.hidden}>
           <Text variant="small">{props.errorMessage}</Text>
         </div>
+        {/* {state.quillStyle}<br/> */}
     </div>
   );
 }

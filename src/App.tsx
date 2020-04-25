@@ -1,12 +1,11 @@
 import React, { useState} from 'react';
 
-
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 // import { Icon } from '@fluentui/react/lib/Icon';
 
-
 import  Quillwrapper from './components/QuillWrapper/QuillWrapper';
+
 // Styles
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,6 +20,7 @@ interface IForm extends Dictionary {
 interface IAppState {
   form: IForm;
   errors: IForm;
+  placeholders: IFrom
 }
 
 function App() {
