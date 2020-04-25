@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 
-//import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 // import { Icon } from '@fluentui/react/lib/Icon';
 
 
@@ -17,10 +18,12 @@ function App() {
 
   const onChange = (value: string) => {
     const newForm = Object.assign({}, form);
-
     newForm.editorHtml = value;
-
     setForm(newForm);
+  }
+
+  const sendForm = () => {
+    console.log("sendForm");
   }
 
   return (
@@ -44,6 +47,9 @@ function App() {
             onChange={onChange}
           />
 
+          <TextField label="Textfield 1"/>
+
+          <PrimaryButton text="Primary" onClick={_sendForm} allowDisabledFocus disabled={saving} checked={checked} />
           <br />
 
           {JSON.stringify(form)}
