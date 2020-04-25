@@ -3,6 +3,11 @@ import ReactQuill, { Quill } from 'react-quill';
 // import { Icon } from '@fluentui/react/lib/Icon';
 import { getIconClassName } from '@uifabric/styling';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import {
+  AnimationStyles,
+  AnimationVariables,
+  mergeStyles
+} from 'office-ui-fabric-react/lib/Styling';
 
 // Styles
 // import 'office-ui-fabric-core/dist/css/fabric.min.css';
@@ -48,6 +53,10 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   const [focus, setFocus] = useState(false);
   const [quillStyle, setQuillStyle] = useState(styles.quillWrapper);
 
+  const myStyle3 = mergeStyles(AnimationStyles.slideRightIn400, {
+    backgroundColor: "green",
+  });
+  
   const onFocus = () => {
     setQuillStyle(styles.quillWrapperFocus);
     setFocus(true);
