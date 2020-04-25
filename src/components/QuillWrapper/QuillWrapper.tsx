@@ -91,9 +91,6 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   
   const onFocus = () => {
-    // setQuillStyle(getQuillStyle(true));
-    // setFocus(true);
-
       setState({
         focus: true,
         quillStyle: mergeStyles(styles.quillWrapper, styles.focus, error ? styles.error : "") // styles.quillWrapperFocusError
@@ -145,7 +142,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   return (
     <div>
-        {state.quillStyle}<br/>
+        {/* {state.quillStyle}<br/> */}
         <Label
           required={props.required}
           // htmlFor="toolbar-quillwrapper"

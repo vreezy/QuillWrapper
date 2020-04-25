@@ -130,6 +130,7 @@ function App() {
 
           <TextField
             label="Textfield 1"
+            required
             errorMessage={state.errors.textField}
             value={state.form.textField}
             onChange={(event: any, newValue: string | undefined) => onChangeTextField("textField", newValue)}

@@ -10,29 +10,6 @@
     border-radius: 0 0 2px 2px;
 }
 
-// .quillWrapperError {
-//     border: 1px solid #a80000;
-//     border-radius: 0 0 2px 2px;
-// }
-  
-// .quillWrapperHover {
-//     border: 1px solid Black;
-//     border-radius: 0 0 2px 2px;
-// }
-
-// .quillWrapperFocus {
-//     border: 2px solid rgb(0, 120, 212);
-//     border-radius: 0 0 2px 2px;
-// }
-
-// .quillWrapperFocusError {
-//     border: 2px solid #a80000;
-//     border-radius: 0 0 2px 2px;
-// }
-
-
-
-  
 .hover {
     border: 1px solid Black;
 }
@@ -43,10 +20,8 @@
 }
 
 .error {
-    border-color: #a80000 !important;
+    border-color: #a80000;
 }
-
-
 
 .borderFix {
     border: 1px solid transparent;
