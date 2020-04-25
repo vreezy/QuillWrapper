@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 
 
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -33,6 +33,10 @@ function App() {
 
   const [saving, setSaving] = useState(false);
   // const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    validForm(form);
+  });
 
   const onChangeQuillWrapper = (value: string) => {
     const newForm = Object.assign({}, form);
@@ -71,8 +75,9 @@ function App() {
     const newErrors: IForm = Object.assign({}, errors);
     Object.keys(newErrors).forEach((key: string) => {
       newErrors[key] = ""; 
-    })
-    if(!form.editorHtml || form.editorHtml) {
+    });
+
+    if(form.editorHtml === "") {
       newErrors.editorHtml = "Text darf nicht leer sein."
     }
 
@@ -130,7 +135,11 @@ function App() {
           />
           <br />
 
-          {JSON.stringify(form)}
+          Form:<br />
+          {JSON.stringify(form)}<br />
+          <br />
+          Errors:<br />
+          {JSON.stringify(errors)}<br />
           {/* {Object.keys(form).forEach((key: string): string => {
             return JSON.stringify(form[key])
           })} */}
