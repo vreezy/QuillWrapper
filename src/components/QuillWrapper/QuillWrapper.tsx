@@ -124,7 +124,6 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     <div>
         <Label
           required={props.required}
-          // htmlFor="toolbar-quillwrapper"
         >
           {props.label}
         </Label>
