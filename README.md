@@ -1,7 +1,7 @@
 # QuillWrapper
 This is React-Quill Wrapper for Microsoft Fluent UI (Office UI)
 
-Developed with create-react-app with typescript template
+Developed with create-react-app and typescript template
 
 ## DEMO
 ![Demo Gif](./docu/demo.gif)
