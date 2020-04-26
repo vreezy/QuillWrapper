@@ -40,10 +40,12 @@ https://trello.com/b/fXiiPKZh/quillwrapper
 *on out - Border 1px gray
 *on focus - Border 2px blue
 *on blur - Border 1px gray
-*error - Border 2px red
+*error + focus - Border 2px red
 *error + blur - Border 1px red
 *error + hover - Border 1px red
 *error + out - Border 1px red
+
+
 
 # Original Readme from create-react-app
 
