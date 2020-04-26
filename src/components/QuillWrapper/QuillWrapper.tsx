@@ -60,17 +60,16 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   const [state, setState] = useState(initState);
 
-  const errorStyle = mergeStyles(AnimationStyles.slideDownIn20, {
-    color: "#a80000"
-  });
+  const errorStyle = mergeStyles(AnimationStyles.slideDownIn20, styles.errorMessage);
 
   useEffect(() => {
     setState({
       focus: state.focus,
       quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus : "", error ? styles.error : "")
     })
-
-  }, [props.errorMessage, state.focus, error]);
+    // eslint want every dependencie -> [state.focus, error] but we want only a effect when an errorMessage is been set.
+    // eslint-disable-next-line
+  }, [props.errorMessage]);
   
   const onFocus = () => {
     setState({

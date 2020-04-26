@@ -123,7 +123,7 @@ function App() {
           <br />
           
           <Quillwrapper
-            label="Richt-Text Editor"
+            label="QuillWrapper"
             required
             value={state.form.editorHtml}
             onChange={onChangeQuillWrapper}
@@ -131,7 +131,7 @@ function App() {
           />
 
           <TextField
-            label="Textfield 1"
+            label="Office-UI Textfield"
             required
             errorMessage={state.errors.textField}
             value={state.form.textField}

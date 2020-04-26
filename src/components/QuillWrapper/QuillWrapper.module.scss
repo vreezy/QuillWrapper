@@ -1,26 +1,30 @@
 // @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
-// @import '~office-ui-fabric-react/dist/sass/_References.scss';
+@import '~office-ui-fabric-react/dist/sass/_References.scss';
 
 .hidden {
     display: none
 }
 
 .quillWrapper {
-    border: 1px solid rgb(96, 94, 92);
+    border: 1px solid $ms-color-info; // rgb(96, 94, 92);
     border-radius: 0 0 2px 2px;
 }
 
 .hover {
-    border: 1px solid Black;
+    border: 1px solid $ms-color-black;
 }
 
 .focus {
     border-width: 2px;
-    border-color: rgb(0, 120, 212);
+    border-color: $ms-color-themePrimary; // rgb(0, 120, 212);
 }
 
 .error {
-    border-color: #a80000;
+    border-color: $ms-color-error; // #a80000;
+}
+
+.errorMessage {
+    color: $ms-color-error; // #a80000;
 }
 
 .borderFix {
