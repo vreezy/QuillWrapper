@@ -11,14 +11,14 @@ import 'react-quill/dist/quill.snow.css';
 import './QuillWrapper.css';
 import styles from './QuillWrapper.module.scss';
 
-// must be outside
+// must be outside or it didnt work
 const CustomToolbar = () => (
   <div id="toolbar-quillwrapper">
     <select className="ql-header" defaultValue="">
       <option value="1" />
       <option value="2" />
       <option value="3" />
-      <option  />
+      <option />
     </select>
     <button className="ql-bold" />
     <button className="ql-italic" />
@@ -48,11 +48,10 @@ interface IQuillWrapperState {
   quillStyle: string;
 }
 
-// function QuillWrapper(props: IQuillWrapper) {
 export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrapper) => {
   const error = props.errorMessage !== "";
 
-  const [editorHtml, setEditorHtml] = useState("<h3>Hallo Du!</h3><p>Schreibe einen Text...</p>");
+  const [editorHtml, setEditorHtml] = useState("<h3>Hallo!</h3><p>Schreibe einen Text...</p>");
 
   const initState: IQuillWrapperState = {
     focus: false,
@@ -61,7 +60,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   const [state, setState] = useState(initState);
 
-  const errorStyle = mergeStyles(AnimationStyles.slideDownIn20, styles.errorMessage);
+  const errorMessageStyle = mergeStyles(AnimationStyles.slideDownIn20, styles.errorMessage);
 
   useEffect(() => {
     setState({
@@ -131,22 +130,21 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
         </Label>
         <CustomToolbar />
         <div
-        onMouseOver={onOver}
-        onMouseOut={onOut}
-        className={state.quillStyle}
+          onMouseOver={onOver}
+          onMouseOut={onOut}
+          className={state.quillStyle}
         >
-            <div className={state.focus ? "" : styles.borderFix}>
-                
-                <ReactQuill
-                    value={props.value ? props.value : editorHtml}
-                    onChange={onChange}
-                    modules={modules}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                />
-            </div>
+          <div className={state.focus ? "" : styles.borderFix}>
+            <ReactQuill
+                value={props.value ? props.value : editorHtml}
+                onChange={onChange}
+                modules={modules}
+                onFocus={onFocus}
+                onBlur={onBlur}
+            />
+          </div>
         </div>
-        <div className={error ? errorStyle : styles.hidden}>
+        <div className={error ? errorMessageStyle : styles.hidden}>
           <Text variant="small">{props.errorMessage}</Text>
         </div>
         {/* {state.quillStyle} */}
