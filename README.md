@@ -1,8 +1,7 @@
 # QuillWrapper
 React-Quill Wrapper for Microsoft Fluent UI (Office UI)
 
-Developed with create-react-app and typescript template
-You can use it in a SPFX Project!
+Developed with create-react-app and typescript template but you can use it in a SPFX project!
 
 ## DEMO
 ### Video
