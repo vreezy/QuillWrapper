@@ -40,6 +40,7 @@ https://trello.com/b/fXiiPKZh/quillwrapper
 * no focus + on out - Border 1px gray
 * on focus - Border 2px blue
 * on blur - Border 1px gray
+* focus + on out - Border 2px blue
 * error + focus - Border 2px red
 * error + blur - Border 1px red
 * error + hover - Border 1px red
