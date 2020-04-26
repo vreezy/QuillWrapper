@@ -2,7 +2,7 @@
 React-Quill Wrapper for Microsoft Fluent UI (Office UI)
 
 Developed with create-react-app and typescript template
-You can use it in your SPFX Project!
+You can use it in a SPFX Project!
 
 ## DEMO
 ### Video
@@ -24,8 +24,8 @@ Freeware. Please respect the Licences in the used projects.
 ## Installation in your Project
 copy the QuillWrapper component into your project and install: 
 * npm install react-quill
-* npm i @uifabric/styling --save
-* npm i @fluentui/react
+* npm i @uifabric/styling
+* npm i @fluentui/react // is by default in SPFX included
 
 ## Packages Docus
 * https://www.npmjs.com/package/react-quill
