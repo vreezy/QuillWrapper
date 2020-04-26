@@ -3,24 +3,30 @@ This is React-Quill Wrapper for Microsoft Fluent UI (Office UI)
 
 Developed with create-react-app with typescript template
 
-## usage
+## DEMO
+![Demo mkv](./docu/demo.mkv)
+![Demo Gif](./docu/demo.gif)
+
+## Included Fea
+## Blackbox Tests
+TODO
+
+
+## installation
 copy the QuillWrapper Component into your Project
 Intall: 
 * npm install react-quill
 * npm i @uifabric/styling --save
 * npm i @fluentui/react
 
-## Package Docus
-
+## Packages Docus
 * https://www.npmjs.com/package/react-quill
 * https://docs.microsoft.com/de-de/sharepoint/dev/spfx/office-ui-fabric-integration#usage-of-the-office-ui-fabric-icons-in-spfx-components
 * https://developer.microsoft.com/en-us/fluentui#/
 
+
 # Trello / Project Management
 https://trello.com/b/fXiiPKZh/quillwrapper
-
-
-
 
 # Original Readme for create-react-app
 
