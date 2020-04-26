@@ -33,10 +33,14 @@ https://trello.com/b/fXiiPKZh/quillwrapper
 # Tests
 
 ## Blackbox Tests
-TODO
 
-- [ ] on Hover - Border Color get Black
-- [ ] This is an incomplete item
+### Border
+*init - Border Color is gray 1px
+*on Hover - Border Color get Black 1px
+*on out - Border Color is gray 1px
+*on focus - Border Color is Blue 2px
+*on blur - Border Color is gray 1px
+*focus
 
 # Original Readme from create-react-app
 
