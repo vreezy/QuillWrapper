@@ -8,13 +8,14 @@ Developed with create-react-app and typescript template
 
 ## Included Features
 * Translation (QuillWrapper.css),
-* hover Focus and Error Border Colors,
+* Office UI Icons,
+* Hover Focus and Error Border Colors,
 
 ## Blackbox Tests
 TODO
 
 
-## installation
+## Installation in your Project
 copy the QuillWrapper Component into your Project
 Intall: 
 * npm install react-quill
