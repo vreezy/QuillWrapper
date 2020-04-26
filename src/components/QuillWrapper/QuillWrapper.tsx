@@ -81,7 +81,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   const onBlur = () => {
     setState({
       focus: false,
-      quillStyle: mergeStyles(styles.quillWrapper)
+      quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : null)
     });
   }
 
