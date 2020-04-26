@@ -1,6 +1,7 @@
 {
   "name": "quill-test",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@fluentui/react": "^7.107.5",
