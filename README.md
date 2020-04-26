@@ -6,12 +6,12 @@ Developed with create-react-app and typescript template
 ## DEMO
 ![Demo Gif](./docu/demo.gif)
 
-## Included Features
+## Features
 * Translation (QuillWrapper.css),
 * Custom Toolbar,
 * Office UI Icons,
-* Hover, Focus and Error Border Colors,
-* errorMessage like Basic Inputs from Office UI
+* Hover, Focus and Error Border Colors and Size,
+* errorMessage like Basic Inputs from Office UI (animation -> slideDownIn20)
 
 ## Blackbox Tests
 TODO
