@@ -8,8 +8,10 @@ Developed with create-react-app and typescript template
 
 ## Included Features
 * Translation (QuillWrapper.css),
+* Custom Toolbar,
 * Office UI Icons,
-* Hover Focus and Error Border Colors,
+* Hover, Focus and Error Border Colors,
+* errorMessage like Basic Inputs from Office UI
 
 ## Blackbox Tests
 TODO

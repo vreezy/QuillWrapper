@@ -11,6 +11,7 @@ import 'react-quill/dist/quill.snow.css';
 import './QuillWrapper.css';
 import styles from './QuillWrapper.module.scss';
 
+// must be outside
 const CustomToolbar = () => (
   <div id="toolbar-quillwrapper">
     <select className="ql-header" defaultValue="">
