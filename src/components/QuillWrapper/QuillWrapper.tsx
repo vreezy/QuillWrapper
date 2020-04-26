@@ -63,6 +63,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
 
   const errorMessageStyle = mergeStyles(AnimationStyles.slideDownIn20, styles.errorMessage);
 
+  // set error when props.errorMessage is changed
   useEffect(() => {
     setState({
       focus: state.focus,
@@ -114,7 +115,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   }
 
   // for every option in the CustomToolbar you need to define an MS Icon
-  // 
+  // Find Icons: https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
   var icons = Quill.import('ui/icons'); 
   icons['bold'] = `<i class="${getIconClassName('Bold')}" aria-hidden="true"></i>`;
   icons['italic'] = `<i class="${getIconClassName('Italic')}" aria-hidden="true"></i>`;
