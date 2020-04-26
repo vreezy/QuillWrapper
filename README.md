@@ -36,8 +36,8 @@ https://trello.com/b/fXiiPKZh/quillwrapper
 # Tests
 ## Border
 * init - Border 1px gray
-* on Hover - Border 1px black
-* on out - Border 1px gray
+* no focus + on Hover - Border 1px black
+* no focus + on out - Border 1px gray
 * on focus - Border 2px blue
 * on blur - Border 1px gray
 * error + focus - Border 2px red
@@ -91,3 +91,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
