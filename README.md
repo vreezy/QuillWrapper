@@ -18,6 +18,9 @@ You can use it in your SPFX Project!
 * Hover, Focus and Error Border Colors and Size,
 * errorMessage like Basic Inputs from Office UI (animation -> slideDownIn20)
 
+## Licence
+Freeware. Please respect the Licences in the used projects.
+
 ## Installation in your Project
 copy the QuillWrapper component into your project and install: 
 * npm install react-quill
