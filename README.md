@@ -11,7 +11,7 @@ Developed with create-react-app and typescript template but you can use it in a 
 [vreezy.de/github/quillwrapper](https://vreezy.de/github/quillwrapper/)
 
 ## Features
-* Translation (QuillWrapper.css),
+* Translation,
 * Custom Toolbar,
 * Office UI Icons,
 * Hover, Focus and Error Border Colors and Size,
