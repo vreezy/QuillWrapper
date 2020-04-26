@@ -4,10 +4,12 @@ This is React-Quill Wrapper for Microsoft Fluent UI (Office UI)
 Developed with create-react-app with typescript template
 
 ## DEMO
-![Demo mkv](./docu/demo.mkv)
 ![Demo Gif](./docu/demo.gif)
 
-## Included Fea
+## Included Features
+* Translation (QuillWrapper.css),
+* hover Focus and Error Border Colors,
+
 ## Blackbox Tests
 TODO
 
