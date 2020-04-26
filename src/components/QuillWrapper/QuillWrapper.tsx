@@ -89,7 +89,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(!state.focus) {
       setState({
         focus: state.focus,
-        quillStyle: mergeStyles(styles.quillWrapper, styles.hover, error ? styles.error : "")// styles.quillWrapperHover
+        quillStyle: mergeStyles(styles.quillWrapper, styles.hover, error ? styles.error : null)
       });
     };
   }
@@ -98,7 +98,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     if(!state.focus) {
       setState({
         focus: state.focus,
-        quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : "")
+        quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : null)
       });
     };
   }
@@ -134,7 +134,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
           onMouseOut={onOut}
           className={state.quillStyle}
         >
-          <div className={state.focus ? "" : styles.borderFix}>
+          <div className={state.focus ? "" : styles.borderFocusPlaceholder}>
             <ReactQuill
                 value={props.value ? props.value : editorHtml}
                 onChange={onChange}
