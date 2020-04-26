@@ -35,7 +35,8 @@ https://trello.com/b/fXiiPKZh/quillwrapper
 ## Blackbox Tests
 TODO
 
-
+- [ ] on Hover - Border Color get Black
+- [ ] This is an incomplete item
 
 # Original Readme from create-react-app
 
