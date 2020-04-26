@@ -12,6 +12,7 @@ import './QuillWrapper.css';
 import styles from './QuillWrapper.module.scss';
 
 // must be outside or it didnt work
+// DOCU: https://quilljs.com/docs/modules/toolbar/
 const CustomToolbar = () => (
   <div id="toolbar-quillwrapper">
     <select className="ql-header" defaultValue="">
@@ -112,6 +113,8 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     }
   }
 
+  // for every option in the CustomToolbar you need to define an MS Icon
+  // 
   var icons = Quill.import('ui/icons'); 
   icons['bold'] = `<i class="${getIconClassName('Bold')}" aria-hidden="true"></i>`;
   icons['italic'] = `<i class="${getIconClassName('Italic')}" aria-hidden="true"></i>`;
