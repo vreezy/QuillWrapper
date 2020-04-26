@@ -30,11 +30,11 @@ copy the QuillWrapper component into your project and install:
 * https://developer.microsoft.com/en-us/fluentui#/
 
 
-# Trello / Project Management
+## Trello / Project Management
 https://trello.com/b/fXiiPKZh/quillwrapper
 
-# Tests
-## Border
+## Tests
+### Border
 * init - Border 1px gray
 * no focus + on Hover - Border 1px black
 * no focus + on out - Border 1px gray
