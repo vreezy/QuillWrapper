@@ -13,13 +13,10 @@ Developed with create-react-app and typescript template
 * Hover, Focus and Error Border Colors and Size,
 * errorMessage like Basic Inputs from Office UI (animation -> slideDownIn20)
 
-## Blackbox Tests
-TODO
 
 
 ## Installation in your Project
-copy the QuillWrapper Component into your Project
-Intall: 
+copy the QuillWrapper component into your project and install: 
 * npm install react-quill
 * npm i @uifabric/styling --save
 * npm i @fluentui/react
@@ -33,7 +30,14 @@ Intall:
 # Trello / Project Management
 https://trello.com/b/fXiiPKZh/quillwrapper
 
-# Original Readme for create-react-app
+# Tests
+
+## Blackbox Tests
+TODO
+
+
+
+# Original Readme from create-react-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
