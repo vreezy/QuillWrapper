@@ -8,6 +8,7 @@ import { AnimationStyles, mergeStyles } from 'office-ui-fabric-react/lib/Styling
 
 // Styles
 import 'react-quill/dist/quill.snow.css';
+// Translaton / Localization is in the css
 import './QuillWrapper.css';
 import styles from './QuillWrapper.module.scss';
 
