@@ -8,7 +8,7 @@ Developed with create-react-app and typescript template
 ![Demo Gif](./docu/demo.gif)
 
 ### Functional
-[vreezy.de](https://github.com)
+[vreezy.de](https://vreezy.de/github/quillwrapper/)
 
 ## Features
 * Translation (QuillWrapper.css),
