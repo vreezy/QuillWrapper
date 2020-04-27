@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState, useEffect} from 'react';
+import * as React from 'react';
+import { FunctionComponent, useState, useEffect} from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 // import { Icon } from '@fluentui/react/lib/Icon';
 import { getIconClassName } from '@uifabric/styling';
@@ -37,7 +38,7 @@ const modules = {
   }
 };
 
-export interface IQuillWrapper {
+export interface IQuillWrapperProps {
   required?: boolean;
   label?: React.ReactNode;
   errorMessage?: React.ReactNode;
@@ -50,7 +51,7 @@ interface IQuillWrapperState {
   quillStyle: string;
 }
 
-export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrapper) => {
+export const QuillWrapper: FunctionComponent<IQuillWrapperProps> = (props: IQuillWrapperProps) => {
   const error = props.errorMessage !== "";
 
   const [editorHtml, setEditorHtml] = useState("<h3>Hallo!</h3><p>Schreibe einen Text...</p>");
@@ -58,7 +59,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
   const initState: IQuillWrapperState = {
     focus: false,
     quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : "")
-  }
+  };
 
   const [state, setState] = useState(initState);
 
@@ -69,7 +70,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     setState({
       focus: state.focus,
       quillStyle: mergeStyles(styles.quillWrapper, state.focus ? styles.focus : "", error ? styles.error : "")
-    })
+    });
     // eslint want every dependencie -> [state.focus, error] but we want only a effect when an errorMessage is been set.
     // eslint-disable-next-line
   }, [props.errorMessage]);
@@ -79,14 +80,14 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
       focus: true,
       quillStyle: mergeStyles(styles.quillWrapper, styles.focus, error ? styles.error : "")
     });
-  }
+  };
 
   const onBlur = () => {
     setState({
       focus: false,
       quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : null)
     });
-  }
+  };
 
   const onOver = () => {
     if(!state.focus) {
@@ -94,8 +95,8 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
         focus: state.focus,
         quillStyle: mergeStyles(styles.quillWrapper, styles.hover, error ? styles.error : null)
       });
-    };
-  }
+    }
+  };
 
   const onOut = () => {
     if(!state.focus) {
@@ -103,8 +104,8 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
         focus: state.focus,
         quillStyle: mergeStyles(styles.quillWrapper, error ? styles.error : null)
       });
-    };
-  }
+    }
+  };
 
   const onChange = (value: string) => {    
     if(typeof props.onChange === "function") {
@@ -113,7 +114,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
     else {
       setEditorHtml(value);
     }
-  }
+  };
 
   // for every option in the CustomToolbar you need to define an MS Icon
   // Find Icons: https://developer.microsoft.com/en-us/fluentui#/styles/web/icons
@@ -154,6 +155,6 @@ export const QuillWrapper: FunctionComponent<IQuillWrapper> = (props: IQuillWrap
         {/* {state.quillStyle} */}
     </div>
   );
-}
+};
 
 export default QuillWrapper;
