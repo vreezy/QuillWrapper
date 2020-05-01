@@ -62,7 +62,7 @@ export const QuillWrapper: FunctionComponent<IQuillWrapperProps> = (props: IQuil
   };
 
   const [state, setState] = useState(initState);
-  ms-motion-slideLeftIn
+  
   const errorMessageStyle = mergeStyles(AnimationStyles.slideDownIn20, styles.errorMessage);
 
   // set error when props.errorMessage is changed
